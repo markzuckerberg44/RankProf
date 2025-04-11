@@ -2,13 +2,13 @@ import { Button, Html } from "@react-email/components";
 import * as React from "react";
 
 type WelcomeProps = {
-  firstName: string;
+  nombre: string;
 }
 
-export default function Welcome({firstName}: WelcomeProps) {
+export default function Welcome({nombre}: WelcomeProps) {
   return (
     <Html>
-      <header>Hola {firstName}, aqui tienes tu codigo de confirmacion</header>
+      <header>Hola {nombre}, aqui tienes tu codigo de confirmacion</header>
 
       <Button
         href="https://example.com"
