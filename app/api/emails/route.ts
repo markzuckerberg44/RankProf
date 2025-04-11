@@ -8,7 +8,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 function verificar_estudiante(email: string) {
     // Aqui se puede agregar la logica para verificar el estudiante
     let list_email = email.split("@");
-    if (list_email[1] == "alumnos.ucn.cl") {
+    if (list_email[1] == "alumnos.ucn.cl" || list_email[1] == "gmail.com") { //remover el || list_email[1] == "gmail.com"
       return true;
     }
 

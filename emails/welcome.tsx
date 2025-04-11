@@ -8,14 +8,15 @@ type WelcomeProps = {
 export default function Welcome({nombre}: WelcomeProps) {
   return (
     <Html>
-      <header>Hola {nombre}, aqui tienes tu codigo de confirmacion</header>
-
-      <Button
-        href="https://example.com"
-        style={{ background: "#000", color: "#fff", padding: "12px 20px" }}
-      >
-        Click me
-      </Button>
+      <div style={{width: "500px", height: "500px"}}>
+        <h1 style={{ color: "#ffffff", textAlign: "center", height: "70px", backgroundColor: "#0066ff"}}>
+          ¡Hola {nombre}!
+        </h1>
+        <div>
+          
+        </div>
+      </div>
+      
     </Html>
   );
 }
