@@ -1,4 +1,5 @@
 import Welcome from "@/emails/welcome";
+import { stringify } from "querystring";
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -36,7 +37,7 @@ export async function POST(request: Request) {
         react: Welcome({ nombre }),
       });
 
-    return new Response('✅ Te enviamos un codigo de verificacion, revisa tu correo!');
+    return new Response('✅ Te enviamos un codigo de verificacion, revisa tu correo!#' + String(23));
     }
 
     else {
