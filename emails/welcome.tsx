@@ -5,7 +5,11 @@ type WelcomeProps = {
   nombre: string;
 }
 
-export default function Welcome({nombre}: WelcomeProps) {
+type VerifyCode = {
+  strcode: string;
+}
+
+export default function Welcome({nombre}: WelcomeProps, {strcode}: VerifyCode) {
   return (
     <Html>
       <div style={{width: "500px", height: "500px", backgroundColor: "#e6e6ff"}}>
@@ -26,7 +30,8 @@ export default function Welcome({nombre}: WelcomeProps) {
           <h1 style={
             { color:"#000000", textAlign:"center", padding: "10px",
               backgroundColor: "#b3b3b3", width: "110px", margin:"auto"
-            }}>XXXXXX
+            }}>{strcode}
+
           </h1>
         </div>
       </div>

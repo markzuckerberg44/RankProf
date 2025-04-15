@@ -6,6 +6,7 @@ export default function Home() {
   const [email, setEmail] = useState(""); // Estado para almacenar el correo
   const [message, setMessage] = useState(""); // Estado para almacenar el mensaje de respuesta
   const [timer, setTimer] = useState(""); // Estado para añadir un temporizador al cambio de pagina
+  const [disabler, switchButton] = useState(false);
   const router = useRouter(); //router para cambiar pagina
 
   function waiter() {
@@ -18,6 +19,7 @@ export default function Home() {
 
   const handleSubmit = async () => {
     try {
+      switchButton(true);
       const response = await fetch("/api/emails", {
         method: "POST",
         headers: {
@@ -40,6 +42,7 @@ export default function Home() {
       } else {
         const errorText = await response.text(); // Obtén el mensaje de error
         setMessage(errorText); // Muestra el mensaje de error
+        switchButton(false);
 
       }
 
@@ -64,8 +67,10 @@ export default function Home() {
         />
 
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className={`bg-blue-500 text-white px-4 py-2 rounded 
+          ${disabler ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"}`}
           onClick={handleSubmit} // Llama a la función para enviar el correo
+          disabled={disabler}
         >
           Enviar Correo
         </button>
