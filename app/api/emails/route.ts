@@ -3,6 +3,8 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const code = Math.floor(100000 + Math.random() * 900000)
+
 // aqui mostramos la info del usuario al usuario (creo)
 
 function verificar_estudiante(email: string) {
@@ -20,6 +22,7 @@ export async function POST(request: Request) {
     const { email,firstName } = await request.json();
 
     let verificado = verificar_estudiante(email);
+    let strcode = String(code);
 
     if (verificado) {
       let nombre = "";// Se usa un valor por defecto para firstName
@@ -33,10 +36,10 @@ export async function POST(request: Request) {
         from: 'test@resend.dev',
         to: email,
         subject: 'Codigo de verificación',
-        react: Welcome({ nombre }),
+        react: Welcome({ nombre }, { strcode }),
       });
 
-    return new Response('✅ Te enviamos un codigo de verificacion, revisa tu correo!');
+    return new Response('✅ Te enviamos un codigo de verificacion, revisa tu correo!#' + String(code));
     }
 
     else {
